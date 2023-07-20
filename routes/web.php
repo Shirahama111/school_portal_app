@@ -20,9 +20,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/main-menu', function () {
+    return view('main_menu');
+})->middleware(['auth', 'verified'])->name('main-menu');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
 
     // login後に表示されるページ
-    public const HOME = '/dashboard';
+    public const HOME = '/main-menu';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
