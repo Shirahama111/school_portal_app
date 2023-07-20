@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::get('/main-menu', function () {
-    return view('main_menu');
+    return view('main-menu');
 })->middleware(['auth', 'verified'])->name('main-menu');
 
 Route::middleware('auth')->group(function () {
