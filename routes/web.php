@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// localhostにアクセスでloginページを表示
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

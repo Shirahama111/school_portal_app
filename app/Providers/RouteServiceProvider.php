@@ -17,6 +17,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+
+    // login後に表示されるページ
     public const HOME = '/dashboard';
 
     /**
