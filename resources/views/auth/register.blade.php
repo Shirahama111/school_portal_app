@@ -39,6 +39,23 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Position -->
+        <div class="mt-4">
+            <x-input-label for="position" :value="__('Position')" />
+            <div class="border border-gray-300 rounded-md mt-1 p-3">
+                @foreach ($positions as $position)
+                <div class="flex items-center py-2">
+                    @if($position->id===1)
+                    <input checked id="{{$position->id}}" type="radio" value="{{$position->id}}" name="position_id" class="transition w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    @else
+                    <input id="{{$position->id}}" type="radio" value="{{$position->id}}" name="position_id" class="transition w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    @endif
+                    <label for="{{$position->id}}" class="w-full ml-2 text-sm font-medium text-gray-900 hover:text-gray-500 dark:text-gray-300 cursor-pointer transition">{{ $position->name }}</label>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

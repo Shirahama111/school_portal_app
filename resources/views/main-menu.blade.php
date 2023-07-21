@@ -13,6 +13,10 @@
     @if(Auth::user()->id === 1)
     <!-- 指導員用メニュー -->
     <div class="py-12">
+        <div>
+            <!-- {{Auth::user()->position->name}} -->
+            {{Auth::user()->position_id}}
+        </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-4xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 shadow-lg sm:rounded-lg transition">
                 <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 hover:text-gray-500 transition">相談フォーム 確認画面</a>
@@ -45,7 +49,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-4xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 shadow-lg sm:rounded-lg transition">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 hover:text-gray-500 transition">相談フォーム 送信画面</a>
+                <a href="{{ route('consultation.student') }}" class="block p-6 font-bold text-center text-lg text-gray-700 hover:text-gray-500 transition">相談フォーム 送信画面</a>
             </div>
             <div class="max-w-4xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 shadow-lg sm:rounded-lg transition">
                 <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 hover:text-gray-500 transition">学内予定表 確認画面</a>
