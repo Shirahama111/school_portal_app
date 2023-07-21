@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             
-            $table->unsignedBigInteger('position_id')->after('id')->default(1);
+            $table->unsignedBigInteger('position_id')->after('id');
 
         
 
