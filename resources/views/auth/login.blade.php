@@ -1,4 +1,13 @@
+<!-- ゲストユーザ用 -->
+
 <x-guest-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+           学内ポータルアプリ ログイン
+        </h2>
+    </x-slot>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,7 +53,5 @@
             </x-primary-button>
         </div>
     </form>
-
-    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
 
 </x-guest-layout>
