@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Position;
+use App\Models\Classroom;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -22,7 +23,11 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $positions = Position::all();
-        return view('auth.register')->with('positions',$positions);
+        $classrooms = Classroom::all();
+
+        return view('auth.register')
+                ->with('positions',$positions)
+                ->with('classrooms',$classrooms);
     }
 
     /**
@@ -37,6 +42,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'position_id' => ['required'],
+            'classroom_id' => ['required'],
         ]);
 
         $user = User::create([
@@ -44,6 +50,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'position_id' => $request->position_id,
+            'classroom_id' => $request->classroom_id,
         ]);
 
         event(new Registered($user));

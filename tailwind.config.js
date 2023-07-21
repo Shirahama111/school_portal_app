@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                kosugimaru: ['Kosugi Maru'],
             },
             colors: {
                 'pastelblue-100': '#a1eafb',
