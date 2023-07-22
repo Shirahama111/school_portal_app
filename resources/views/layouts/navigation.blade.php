@@ -33,6 +33,7 @@ switch ($auth) {
                         メインメニュー
                     </x-nav-link>
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -40,7 +41,7 @@ switch ($auth) {
                 <x-dropdown align="right" auth="{{ $auth }}" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-900 {{ $bg }} shadow-xl hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->classroom->name }} : {{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->school->name }} - {{ Auth::user()->classroom->name }} : {{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

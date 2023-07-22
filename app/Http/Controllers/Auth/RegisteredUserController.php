@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Position;
 use App\Models\Classroom;
+use App\Models\School;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -24,10 +25,14 @@ class RegisteredUserController extends Controller
     {
         $positions = Position::all();
         $classrooms = Classroom::all();
+        $schools = School::all();
 
         return view('auth.register')
-                ->with('positions',$positions)
-                ->with('classrooms',$classrooms);
+                ->with([
+                    'positions' => $positions,
+                    'classrooms' => $classrooms,
+                    'schools' => $schools,
+                ]);
     }
 
     /**
@@ -43,6 +48,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'position_id' => ['required'],
             'classroom_id' => ['required'],
+            'school_id' => ['required'],
         ]);
 
         $user = User::create([
@@ -51,12 +57,16 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'position_id' => $request->position_id,
             'classroom_id' => $request->classroom_id,
+            'school_id' => $request->school_id,
         ]);
 
         event(new Registered($user));
 
+
         // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with(['register_user' => $user,'password' => $request->password_confirmation]);
     }
+
+    
 }

@@ -14,15 +14,8 @@ class PositionsSeeder extends Seeder
     public function run(): void
     {
         DB::table('positions')->insert([
-            'name' => '生徒',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('positions')->insert([
-            'name' => '指導員',
-            'created_at' => now(),
-            'updated_at' => now(),
+           ['name' => '生徒','created_at' => now(),'updated_at' => now()],
+            ['name' => '指導員','created_at' => now(),'updated_at' => now()],
         ]);
     }
 }

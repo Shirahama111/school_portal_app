@@ -248,6 +248,7 @@ return [
         'username' => 'ユーザー名',
         'year' => '年',
         'classroom_id' => '所属クラス',
+        'school_id' => '学校名',
     ],
 
 ];
