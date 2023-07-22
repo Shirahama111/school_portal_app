@@ -18,14 +18,14 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-kosugimaru antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white bg-opacity-50">
 
             @include('layouts.navigation',['auth' => Auth::user()->position->name])
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-gray-100 shadow-md border-b-2">
-                    <div class="max-w-7xl mx-auto mt-4 py-4 px-4 sm:px-6 lg:px-8">
+                <header class="bg-gray-100 shadow-md border-b-2 bg-opacity-80">
+                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
