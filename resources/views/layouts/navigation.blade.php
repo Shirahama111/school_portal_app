@@ -2,19 +2,22 @@
 switch ($auth) {
     case '生徒':
         $bg = 'bg-pastelblue-900 border-blue-300';
+        $dropdown_style = 'bg-gray-100';
         break;
     case '指導員':
         $bg = 'bg-pastelpurple-500 border-purple-300';
+        $dropdown_style = 'bg-gray-100';
         break;
     default:
         $bg = 'bg-gray-900';
+        $dropdown_style = 'bg-gray-100';
         break;
 }
 @endphp
 
 
 
-<nav x-data="{ open: false }" class="bg-gray-100 shadow-lg">
+<nav x-data="{ open: false }" class="{{ $bg }} shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -40,7 +43,7 @@ switch ($auth) {
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" auth="{{ $auth }}" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-900 {{ $bg }} shadow-xl hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-900 {{ $dropdown_style }} shadow-xl hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->school->name }} - {{ Auth::user()->classroom->name }} : {{ Auth::user()->name }}</div>
 
                             <div class="ml-1">

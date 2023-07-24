@@ -183,7 +183,7 @@ return [
         'birthday' => '誕生日',
         'body' => '本文',
         'city' => '市',
-        'content' => 'コンテンツ',
+        'content' => '内容',
         'country' => '国',
         'created_at' => '作成日',
         'creator' => '作成者',
@@ -249,6 +249,7 @@ return [
         'year' => '年',
         'classroom_id' => '所属クラス',
         'school_id' => '学校名',
+        'to_user_id' => '宛先',
     ],
 
 ];

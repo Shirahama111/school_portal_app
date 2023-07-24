@@ -31,7 +31,8 @@ class UsersSeeder extends Seeder
                 'position_id' => 2,   //指導員ユーザ
                 'classroom_id' => 1,  //プログラム設計科
                 'school_id' => 1,     //小竹高等技術専門校
-            ]
+            ],
+            
         ]);
 
     }

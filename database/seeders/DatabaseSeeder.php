@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PositionsSeeder::class,
             ClassroomsSeeder::class,
             SchoolsSeeder::class,
+            UsersSeeder::class,
         ]);
     }
 }

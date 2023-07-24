@@ -22,13 +22,13 @@ switch ($width) {
 
 switch ($auth) {
     case '生徒':
-        $bg = 'bg-pastelblue-900 border border-blue-300';
+        $bg = 'bg-gray-100';
         break;
     case '指導員':
-        $bg = 'bg-pastelpurple-500 border border-purple-300';
+        $bg = 'bg-gray-100';
         break;
     default:
-        $bg = 'bg-gray-900';
+        $bg = 'bg-gray-100';
         break;
 }
 

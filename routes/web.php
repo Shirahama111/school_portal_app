@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('consultation-student', [ConsultationController::class, 'create'])->name('consultation.student');
+    Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation.index');
+    Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 
 });
 

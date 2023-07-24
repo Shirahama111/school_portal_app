@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-kosugimaru antialiased">
-        <div class="min-h-screen bg-white bg-opacity-50">
+        <div class="min-h-screen bg-white bg-opacity-70">
 
             @include('layouts.navigation',['auth' => Auth::user()->position->name])
 
