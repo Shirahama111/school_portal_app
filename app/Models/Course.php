@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consultation extends Model
+class Course extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'to',
         'from',
+        'company_name',
+        'address',
         'content',
-        'anonymity',
+        'remarks',
         'date',
     ];
 

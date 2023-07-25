@@ -15,7 +15,8 @@
         </h2>
     </x-slot>
 
-    <div class="my-10 m-auto max-w-xl px-6 py-8 bg-pastelpurple-500 shadow-2xl overflow-hidden sm:rounded-lg">
+    <div class="my-10 m-auto max-w-3xl p-10 bg-pastelpurple-500 bg-opacity-70 shadow-2xl overflow-hidden sm:rounded-lg">
+        <label class="block text-gray-900 text-xl font-bold mb-6">登録フォーム</label>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 

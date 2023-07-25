@@ -11,19 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consultations', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('to');
-            $table->integer('from');
+            $table->integer('from')->unique();
+            $table->string('company_name');
+            $table->string('address');
             $table->text('content');
-            $table->boolean('anonymity');
+            $table->text('remarks');
             $table->timestamp('date');
         });
-
-        // Schema::table('consultations', function (Blueprint $table) {
-
-        //     $table->foreign('to')->references('id')->on('users');
-        // });
     }
 
     /**
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consultations');
+        Schema::dropIfExists('courses');
     }
 };

@@ -20,10 +20,14 @@ class ConsultationController extends Controller
                                     'position_id' => 2])->get();
 
         //自分が送った相談を取得
-        $consultations = Consultation::where(['from' => $request->user()->id])->get();
+        $fromConsultations = Consultation::where(['from' => $request->user()->id])->get();
+
+        //自分に送られてきた相談を取得
+        $toConsultations = Consultation::where(['to' => $request->user()->id])->get();
 
         return view('consultation')->with(['instructors' => $instructors,
-                                            'consultations' => $consultations]);
+                                            'fromConsultations' => $fromConsultations,
+                                            'toConsultations' => $toConsultations]);
     }
 
     public function store(Request $request): View
@@ -49,11 +53,16 @@ class ConsultationController extends Controller
 
                                     
         //自分が送った相談を取得
-        $consultations = Consultation::where(['from' => $request->user()->id])->get();
+        $fromConsultations = Consultation::where(['from' => $request->user()->id])->get();
 
+        
+        //自分に送られてきた相談を取得
+        $toConsultations = Consultation::where(['to' => $request->user()->id])->get();
+        
         session()->flash('status', 'consultation.created');
-                                    
+
         return view('consultation')->with(['instructors' => $instructors,
-                                            'consultations' => $consultations]);
+                                            'fromConsultations' => $fromConsultations,
+                                            'toConsultations' => $toConsultations]);
     }
 }

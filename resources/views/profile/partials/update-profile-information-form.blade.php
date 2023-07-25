@@ -47,6 +47,37 @@
             @endif
         </div>
 
+
+        <!-- School -->
+        <div>
+            <x-input-label for="school" :value="__('School')" />
+            <select id="school" name="school_id" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @foreach($schools as $school)
+                    @if($school->id == $user->school_id)
+                    <option value="{{ $school->id }}" selected>{{ $school->name }}</option>
+                    @else
+                    <option value="{{ $school->id }}">{{ $school->name }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('school_id')" class="mt-2" />
+        </div>
+
+        <!-- Classroom -->
+        <div>
+            <x-input-label for="classroom" :value="__('Classroom')" />
+            <select id="classroom" name="classroom_id" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @foreach($classrooms as $classroom)
+                    @if($classroom->id == $user->classroom_id)
+                    <option value="{{ $classroom->id }}" selected>{{ $classroom->name }}</option>
+                    @else
+                    <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('classroom_id')" class="mt-2" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

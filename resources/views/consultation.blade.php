@@ -17,8 +17,6 @@
     @break
 @endswitch
 
-<!-- 生徒用 -->
-
 <x-app-layout>
 
 @if($auth === '生徒')
@@ -29,7 +27,7 @@
   </x-slot>
 
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <form class="w-full max-w-2xl mx-auto my-8 p-8 bg-pastelblue-900 rounded-md" action="#" method="POST">
+    <form class="w-full max-w-2xl mx-auto my-8 p-8 bg-pastelblue-900 rounded-md shadow-2xl" action="{{ route('consultation.store') }}" method="POST">
       @method('POST')
       @csrf
       <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-4 border-b-2 border-gray-700 pb-2">
@@ -90,15 +88,16 @@
     </form>
   </div>
 
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    @foreach($consultations as $consultation)
-    <div class="max-w-2xl my-8 mx-auto bg-pastelblue-900 shadow-md sm:rounded-lg">
-      <p>To:{{ $consultation->user->name }}</p>
-      <p>Content:{{ $consultation->content }}</p>
-      <p>Date:{{ $consultation->date }}</p>
-      @if($consultation->anonymity)
-      <p>匿名希望</p>
-      @endif
+  <div class="max-w-4xl mx-auto sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
+    <label class="text-gray-900 text-xl font-bold" for="anonymity">相談履歴</label>
+    @foreach($fromConsultations as $consultation)
+    <div class="max-w-3xl my-8 mx-auto bg-pastelblue-900 shadow-md sm:rounded-lg p-6">
+      <div class="text-lg mb-2">宛先 : {{ $consultation->toUser->name }}</div>  
+      <div class="text-md p-2 bg-gray-100 rounded-lg">{{ $consultation->content }}</div>
+        <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
+        @if($consultation->anonymity)
+        <div class="text-sm text-right">匿名希望</div>
+        @endif
     </div>
     @endforeach
   </div>
@@ -109,6 +108,21 @@
             相談フォーム 確認画面
         </h2>
   </x-slot>
+
+  <div class="my-8 max-w-4xl mx-auto sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
+    <label class="text-gray-900 text-xl font-bold" for="anonymity">受けた相談</label>
+    @foreach($toConsultations as $consultation)
+    <div class="max-w-3xl my-8 mx-auto bg-pastelpurple-900 shadow-md sm:rounded-lg p-6">
+      @if($consultation->anonymity)
+      <div class="text-lg mb-2">差出人 : 匿名</div>  
+      @else
+      <div class="text-lg mb-2">差出人 : {{ $consultation->fromUser->name }}</div>  
+      @endif
+      <div class="text-md p-2 bg-gray-100 rounded-lg">{{ $consultation->content }}</div>
+        <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
+    </div>
+    @endforeach
+  </div>
 @endif
 
 </x-app-layout>

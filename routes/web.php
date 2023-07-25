@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainmenuController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation.index');
     Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
+
+    Route::get('/course', [CourseController::class, 'index'])->name('course.index');
+    Route::post('/course', [CourseController::class, 'store'])->name('course.store');
 
 });
 
