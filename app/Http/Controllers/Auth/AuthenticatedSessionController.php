@@ -30,6 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if($request->user()->position_id != 2)
+        {
+            $request->session()->put('auth.instructor',false);
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

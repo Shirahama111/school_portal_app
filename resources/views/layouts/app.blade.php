@@ -16,6 +16,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
     </head>
     <body class="font-kosugimaru antialiased">
         <div class="min-h-screen bg-white bg-opacity-70">

@@ -51,12 +51,13 @@ class ProfileController extends Controller
             return Redirect::to('/profile')->with('status', 'auth.false');
         }
 
-        $request->session()->put('auth', $value);
+        $request->session()->put('auth.instructor', true);
 
         return view('profile.edit', [
         'user' => $request->user(),
         'schools' => School::all(),
-        'classrooms' => Classroom::all()]);
+        'classrooms' => Classroom::all(),
+        'students' => User::where(['school_id' => $request->user()->school_id])->get()]);
     }
 
     /**
@@ -73,10 +74,12 @@ class ProfileController extends Controller
         // dd($request->school_id);
         //dd($request->old_school_id);
 
-        // 指導員の所属学校が変更されたら相談と進路報告を削除
+        // ユーザの所属学校が変更されたら相談と進路報告を削除
         if($request->school_id != $request->old_school_id){
             Consultation::where(['to' => $request->user()->id])->delete();
+            Consultation::where(['from' => $request->user()->id])->delete();
             Course::where(['to' => $request->user()->id])->delete();
+            Course::where(['from' => $request->user()->id])->delete();
         }
 
         $request->user()->save();

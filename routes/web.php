@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainmenuController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/course', [CourseController::class, 'index'])->name('course.index');
     Route::post('/course', [CourseController::class, 'store'])->name('course.store');
+
+    Route::get('/get_events', [ScheduleController::class, 'getEvents']);
+    Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
 
 });
 
