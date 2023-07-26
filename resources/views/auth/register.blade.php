@@ -1,4 +1,3 @@
-<!-- 指導員用 -->
 
 <x-app-layout>
 
@@ -11,7 +10,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            生徒・指導員登録画面
+             生徒・指導員 登録画面
         </h2>
     </x-slot>
 

@@ -12,9 +12,12 @@
             メニュー
         </h2>
     </x-slot>
-
     
     @if(Auth::user()->position->name === '生徒')
+
+    @if(session('ok'))
+    <p>ok</p>
+    @endif
     <!-- 生徒用メニュー -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

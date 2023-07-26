@@ -12,6 +12,8 @@ use App\Models\Course;
 use App\Models\Consultation;
 use App\Models\School;
 use App\Models\Classroom;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -27,6 +29,36 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function editStudent(Request $request)//: View
+    {
+
+        $request->validate([
+           'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        $email = $request->email;
+
+        // dd($password);
+        $user = User::where(['email' => $email, 'position_id' => 2])->first();
+
+        if($user == null)
+        {
+            return Redirect::to('/profile')->with('status', 'auth.false');
+        }
+        else if(!Hash::check($request->password, $user->password))
+        {
+            return Redirect::to('/profile')->with('status', 'auth.false');
+        }
+
+        $request->session()->put('auth', $value);
+
+        return view('profile.edit', [
+        'user' => $request->user(),
+        'schools' => School::all(),
+        'classrooms' => Classroom::all()]);
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -38,8 +70,13 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        if($request->school_id != $request->user()->school_id){
-            
+        // dd($request->school_id);
+        //dd($request->old_school_id);
+
+        // 指導員の所属学校が変更されたら相談と進路報告を削除
+        if($request->school_id != $request->old_school_id){
+            Consultation::where(['to' => $request->user()->id])->delete();
+            Course::where(['to' => $request->user()->id])->delete();
         }
 
         $request->user()->save();
