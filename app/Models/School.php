@@ -18,4 +18,5 @@ class School extends Model
     {
         return $this->hasMany(User::class);
     }
+
 }

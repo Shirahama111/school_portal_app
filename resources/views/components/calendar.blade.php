@@ -1,3 +1,7 @@
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
 <div>
     <div id='calendar'></div>
     
@@ -29,16 +33,25 @@
                 },
                 dateClick: (e)=>{// 日付マスのクリックイベント
                     console.log("dateClick:", e);
-                    document.getElementById('date').value = e.dateStr;
+                    document.getElementById('start_date').value = e.dateStr;
+                    document.getElementById('end_date').value = e.dateStr;
                 },
-                // eventClick: (e)=>{// イベントのクリックイベント
-		        //     alert(e.event.extendedProps.description);
-	            // },
+                eventClick: (e)=>{// イベントのクリックイベント
+                    // document.getElementById('title').value = e.event.title;
+                    // document.getElementById('create_user_id').value = e.event.extendedProps.create_user_id;
+		            // alert(e.event.extendedProps.description);
+	            },
+                eventDidMount: (e)=>{
+                    tippy(e.el, {
+                        content: e.event.extendedProps.description,
+                    });
+                },
+                
         });
+        
             calendar.render();
         });
-    </script>
 
-    <input type="text" name="date" id="date" disabled>
+    </script>
 
 </div>

@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/get_events', [ScheduleController::class, 'getEvents']);
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
+    Route::post('/schedule', [ScheduleController::class, 'store'])->name('schedule.store');
 
 });
 
