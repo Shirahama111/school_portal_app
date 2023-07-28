@@ -5,6 +5,7 @@ use App\Http\Controllers\MainmenuController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/get_events', [ScheduleController::class, 'getEvents']);
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
     Route::post('/schedule', [ScheduleController::class, 'store'])->name('schedule.store');
+    Route::delete('/schedule', [ScheduleController::class, 'delete'])->name('schedule.delete');
+
+    Route::get('/file-share', [FileController::class, 'index'])->name('file-share.index');
 
 });
 

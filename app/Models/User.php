@@ -72,8 +72,8 @@ class User extends Authenticatable
         return $this->hasMany(Course::class);
     }
 
-    public function classSchedules()
+    public function Schedules()
     {
-        return $this->hasMany(ClassSchedules::class);
+        return $this->hasMany(Schedule::class);
     }
 }

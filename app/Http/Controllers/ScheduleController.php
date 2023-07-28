@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\ClassSchedule;
+use App\Models\Schedule;
 use Carbon\Carbon;
 
 class ScheduleController extends Controller
@@ -19,23 +19,32 @@ class ScheduleController extends Controller
     public function store(Request $request): View
     {
 
-        // $request->user()->id;
-        // $request->user()->school_id;
-        // $request->user()->classroom_id;
-        // $request->title;
-        // $request->description;
-
-        $start_date = new Carbon($request->start_date.$request->start_hour.':'.$request->start_minute);
-        $end_date = new Carbon($request->end_date.$request->end_hour.':'.$request->end_minute);
+        $request->validate([
+            'start_date' =>  'required|date|after_or_equal:today', //start_dateが今日以降の日時かどうかチェック
+            'end_date' => 'required|date|after_or_equal:start_date', //end_dateがstart_dateより後の日時かどうかをチェック
+        ]);
 
 
-        // dd([$start_date,$end_date]);
+        $start_date = new Carbon($request->start_date);
+        $end_date = new Carbon($request->end_date);
 
-        ClassSchedule::create([
+
+        if($start_date->hour === 0 && $start_date->minute === 0){
+            $start_date = $start_date->toDateString();
+        }
+        
+        if($end_date->hour === 0 && $end_date->minute === 0){
+            $end_date = $end_date->addDay()->toDateString();
+        }
+
+
+
+        Schedule::create([
             'user_id' => $request->user()->id,
             'school_id' => $request->user()->school_id,
             'classroom_id' => $request->user()->classroom_id,
             'title' => $request->title,
+            'color' => $request->color,
             'description' => $request->description,
             'start_date' => $start_date,
             'end_date' => $end_date,
@@ -47,57 +56,24 @@ class ScheduleController extends Controller
     public function getEvents(Request $request)
     {
 
-        $events = ClassSchedule::where(['school_id' => $request->user()->school_id,'classroom_id' => $request->user()->classroom_id])->get();
+        $events = Schedule::where(['school_id' => $request->user()->school_id,'classroom_id' => $request->user()->classroom_id])->get();
 
 
-
-        $schedules = [
-            [
-                'title' => $request->user()->name,
-                'description' => '人気の美容室予約取れた',
-                'start' => '2023-07-10',
-                'end'   => '2023-07-10',
-
-                'create_user_id' => 2,
-            ],
-            [
-                'title' => '旅行',
-                'description' => '人気の旅館の予約が取れた',
-                'start' => '2023-07-20 10:00',
-                'end'   => '2023-07-25 18:00',
-                'url'   => '',
-
-                'create_user_id' => 2,
-            ],
-            [
-                'title' => '給料日',
-                'description' => '給料日だ',
-                'start' => '2023-07-10',
-                'color' => '#ff44cc',
-
-                'create_user_id' => 2,
-            ],
-            // [
-            //     'title' => $event->title,
-            //     'description' => $event->description,
-            //     'start' => $event->date." ".$event->start,
-            //     'end'   => '2023-07-30'." ".'18:00',
-            // ],
-        ];
+        $schedules = array();
 
         foreach ($events as $event) {
+
                 array_push($schedules,array(
                         'title' => $event->title,
+                        'color' => $event->color,
                         'description' => $event->description,
                         'start' => $event->start_date,
                         'end' => $event->end_date,
-                        'allDay' => true,
 
                         //編集用
+                        'access_user_id' => $request->user()->id,
                         'schedule_id' => $event->id,
-                        'create_user_id' => $event->user_id,
-                        'start_date' => $event->start_date,
-                        'end_date' => $event->end_date,
+                        'created_user_id' => $event->user_id,
                 ));
             }
 
@@ -105,8 +81,13 @@ class ScheduleController extends Controller
 
         return $schedules;
 
-        // $event = ClassSchedule::where(['school_id' => $request->user()->school_id,'classroom_id' => $request->user()->classroom_id])->get();
+    }
 
-        // return response()->json($event);
+    public function delete(Request $request)
+    {
+
+        Schedule::where(['id' => $request->schedule_id])->delete();
+
+        return view('schedule');
     }
 }

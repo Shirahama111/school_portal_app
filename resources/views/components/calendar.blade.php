@@ -13,31 +13,55 @@
                 initialView: 'dayGridMonth',
                 locale: 'ja',
                 headerToolbar: {
-                    left: "dayGridMonth,listMonth",
+                    left: "dayGridMonth,listMonth,multiMonthYear",
                     center: "title",
                     right: "today prev,next"
                 },
                 buttonText: {
                     today: '今月',
                     month: '月',
-                    list: 'リスト'
+                    year: '年',
+                    list: '予定リスト'
                 },
                 eventSources: [ 
                     {
                         url: '/get_events',
                     },
                 ],
+                aspectRatio: 1.25,
                 businessHours: true,
                 dayCellContent: function(arg){
                     return arg.date.getDate();
                 },
                 dateClick: (e)=>{// 日付マスのクリックイベント
                     console.log("dateClick:", e);
-                    document.getElementById('start_date').value = e.dateStr;
-                    document.getElementById('end_date').value = e.dateStr;
+
+                    const startDate = document.getElementById('start_date');
+                    const endDate = document.getElementById('end_date');
+
+                    if(startDate !== null && endDate !== null){
+                        startDate.value = e.dateStr+'T00:00';
+                        endDate.value = e.dateStr+'T00:00';
+                    }
+
+                    // console.log("dateClick:", e.date);
+                    // document.getElementById('end_date').value = e.dateStr;
                 },
                 eventClick: (e)=>{// イベントのクリックイベント
-                    // document.getElementById('title').value = e.event.title;
+                    console.log("eventClick:", e);
+
+                    const deleteButton = document.getElementById('delete_button');
+
+                    if(deleteButton !== null && e.event.extendedProps.created_user_id === e.event.extendedProps.access_user_id){
+                        document.getElementById('schedule_id').value = e.event.extendedProps.schedule_id;
+                        deleteButton.disabled = false;
+                    }
+
+                    if(deleteButton !== null && e.event.extendedProps.created_user_id !== e.event.extendedProps.access_user_id){
+                        deleteButton.disabled = true;
+                    }
+
+                    // document.getElementById('delete_button').value = e.event.title;
                     // document.getElementById('create_user_id').value = e.event.extendedProps.create_user_id;
 		            // alert(e.event.extendedProps.description);
 	            },

@@ -251,6 +251,15 @@ return [
         'school_id' => '学校名',
         'to_user_id' => '宛先',
         'from' => '差出ユーザ',
+        'today' => '今日',
+        'start_date' => '開始日',
+        'end_date' => '終了日',
     ],
+    
+    'values' => [
+        'start_date' => [
+            'today' => '今日'
+        ]
+        ],
 
 ];
