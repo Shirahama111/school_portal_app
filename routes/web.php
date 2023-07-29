@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FolderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/schedule', [ScheduleController::class, 'delete'])->name('schedule.delete');
 
     Route::get('/file-share', [FileController::class, 'index'])->name('file-share.index');
+    Route::post('/file-share', [FileController::class, 'store'])->name('file-share.store');
+
+    Route::get('/{file_path}', [FileController::class, 'openFile'])->name('file-share.open-file');
 
 });
 
