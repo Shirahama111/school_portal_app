@@ -27,20 +27,67 @@
     
       <div class="py-12">
 
+      
+
         <div class="max-w-4xl mx-auto text-center">
-            <form method="POST" action="{{route('file-share.store',['directory_path' => 11])}}" enctype="multipart/form-data">
+          <p>現在のディレクトリ : {{$current_directory}}</p>
+
+          @foreach($breadcrumbs as $breadcrumb)
+          -> <a href="{{ route('file-share.index',['directory_path' => encrypt($breadcrumb['path']) ]) }}">{{$breadcrumb['name']}}</a>
+          @endforeach
+
+          <div class="max-w-4xl mx-auto text-center bg-gray-500 p-4 m-8 rounded-md">
+            <form action="{{ route('file-share.make-directory') }}" method="post">
+              @csrf
+              <input type="hidden" name="directory_path" value="{{ encrypt($current_directory)}}">
+              <div class="">
+                <label>ディレクトリ名</label>
+                <input type="text" name="directory_name" required>
+                <x-primary-button>
+                  作成
+                </x-primary-button>
+              </div>
+            </form>
+          </div>
+
+          <div class="max-w-4xl mx-auto text-center bg-gray-500 p-4 rounded-md">
+            <form method="POST" action="{{route('file-share.store')}}" enctype="multipart/form-data">
                 @csrf
-                <input type="file" id="file" name="file"/>
+                <input type="file" id="file" name="file" required/>
+                <input type="hidden" name="directory_path" value="{{ encrypt($current_directory) }}">
                 <button type="submit">アップロード</button>
             </form>
-a
-            @foreach($directories_path as $directory_path)
-            <a href="{{ route('file-share.index',['directory_path' => $directory_path]) }}">{{$directory_path}}</a>
-            @endforeach
+          </div>
 
-            @foreach($files as $file)
-            <a href="{{route('file-share.open-file',['file_path' => $file['url'] ])}}">{{$file['file_name']}}</a>
-            @endforeach
+          @foreach($directories as $directory)
+          <div class="max-w-4xl mx-auto flex justify-center my-3">
+            <a href="{{ route('file-share.index',['directory_path' => encrypt($directory['path']) ]) }}">{{$directory['name']}}</a>
+            <form action="{{ route('file-share.delete-directory') }}" method="post">
+              @csrf
+              <input type="hidden" name="directory_path" value="{{ encrypt($current_directory)}}">
+              <input type="hidden" name="delete_directory_path" value="{{$directory['path']}}">
+              <x-primary-button class="ml-3">
+                削除
+              </x-primary-button>
+            </form>
+          </div>
+          @endforeach
+
+          @foreach($files as $file)
+          <div class="max-w-4xl mx-auto flex justify-center my-3">
+            <a href="{{$file['url']}}">{{$file['name']}}</a>
+            <a href="{{route('file-share.download',['file_name' => $file['name']])}}">download</a>
+            <form action="{{ route('file-share.delete') }}" method="post">
+            @method('delete')
+            @csrf
+              <input type="hidden" name="directory_path" value="{{ encrypt($current_directory)}}">
+              <input type="hidden" name="delete_file_path" value="{{$file['path']}}">
+              <x-primary-button class="ml-3">
+                削除
+              </x-primary-button>
+            </form>
+          </div>
+          @endforeach
 
 
         </div>

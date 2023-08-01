@@ -51,8 +51,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/file-share', [FileController::class, 'index'])->name('file-share.index');
     Route::post('/file-share', [FileController::class, 'store'])->name('file-share.store');
+    Route::delete('/file-share', [FileController::class, 'delete'])->name('file-share.delete');
 
-    Route::get('/{file_path}', [FileController::class, 'openFile'])->name('file-share.open-file');
+
+    Route::get('/download/{file_name}', [FileController::class, 'download'])->name('file-share.download');
+
+    Route::post('/file-share/make-directory', [FileController::class, 'makeDirectory'])->name('file-share.make-directory');
+    Route::post('/file-share/delete-directory', [FileController::class, 'deleteDirectory'])->name('file-share.delete-directory');
+
+    
+
+    //routeはpathを入れるとおかしくなる
 
 });
 

@@ -76,4 +76,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Schedule::class);
     }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
+    public function directories()
+    {
+        return $this->hasMany(Directory::class);
+    }
 }
