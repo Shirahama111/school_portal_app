@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Directory extends Model
+class EmergencyContact extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'created_user',
-        'path',
+        'user_id',
+        'content',
     ];
 
-    public function createdUser()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'created_user')->withDefault();
+        return $this->belongsTo(User::class,'user_id')->withDefault();
     }
-
 }

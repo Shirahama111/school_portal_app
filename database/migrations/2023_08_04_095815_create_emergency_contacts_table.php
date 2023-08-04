@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('directories', function (Blueprint $table) {
+        Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('created_user');
-            $table->string('path');
+            $table->unsignedBigInteger('user_id');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('directories');
+        Schema::dropIfExists('emergency_contacts');
     }
 };

@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\EmergencyContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,12 +55,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/file-share', [FileController::class, 'delete'])->name('file-share.delete');
 
 
-    Route::get('/download/{file_name}', [FileController::class, 'download'])->name('file-share.download');
+    Route::get('/download/{file_path}', [FileController::class, 'download'])->name('file-share.download');
 
     Route::post('/file-share/make-directory', [FileController::class, 'makeDirectory'])->name('file-share.make-directory');
     Route::post('/file-share/delete-directory', [FileController::class, 'deleteDirectory'])->name('file-share.delete-directory');
 
-    
+    Route::get('/emergency-contact', [EmergencyContactController::class, 'index'])->name('emergency-contact.index');
+    Route::post('/emergency-contact', [EmergencyContactController::class, 'store'])->name('emergency-contact.store');
+    Route::delete('/emergency-contact', [EmergencyContactController::class, 'delete'])->name('emergency-contact.delete');
+
 
     //routeはpathを入れるとおかしくなる
 

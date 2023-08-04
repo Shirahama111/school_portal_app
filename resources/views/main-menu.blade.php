@@ -37,7 +37,7 @@
                 <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 送信画面</a>
             </div>
             <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 確認画面</a>
+                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 確認画面</a>
             </div>
         </div>
     </div>
@@ -124,19 +124,13 @@
                 <a href="{{ route('schedule.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">学内予定表 編集画面</a>
             </div>
             <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">体調報告 確認画面</a>
+                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">出席・体調報告 確認画面</a>
             </div>
             <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
                 <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 確認画面</a>
             </div>
             <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 編集画面</a>
-            </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">教員予定表 確認・編集画面</a>
-            </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="#" class="block p-6 font-bold text-center text-lg text-gray-700 transition">生徒出席状況 確認画面</a>
+                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 編集画面</a>
             </div>
             <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
                 <a href="{{ route('register') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">生徒・指導員登録画面</a>

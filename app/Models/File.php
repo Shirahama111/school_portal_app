@@ -10,10 +10,13 @@ class File extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'created_user',
-        'url',
-        'path',
+            'created_user',
+            'name',
+            'path',
+            'url',
+            'extension',
+            'mime_type',
+            'size',
     ];
 
     public function createdUser()

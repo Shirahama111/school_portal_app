@@ -72,7 +72,7 @@ class User extends Authenticatable
         return $this->hasMany(Course::class);
     }
 
-    public function Schedules()
+    public function schedules()
     {
         return $this->hasMany(Schedule::class);
     }
@@ -80,10 +80,11 @@ class User extends Authenticatable
     public function files()
     {
         return $this->hasMany(File::class);
+    
+    }
+    public function emergencyContacts()
+    {
+        return $this->hasMany(EmergencyContact::class);
     }
 
-    public function directories()
-    {
-        return $this->hasMany(Directory::class);
-    }
 }
