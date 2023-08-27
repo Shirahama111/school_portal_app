@@ -19,7 +19,7 @@
     </head>
 
     <body class="font-kosugimaru antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 bg-opacity-60">
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -30,13 +30,7 @@
                 </header>
             @endif
 
-            <!-- <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div> -->
-
-            <div class="my-10 m-auto max-w-xl px-6 py-8 bg-pastelpink-900 shadow-2xl overflow-hidden sm:rounded-lg">
+            <div class="mx-auto my-[25vh] max-w-xl px-6 py-8 bg-pastelpink-900 shadow-2xl overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

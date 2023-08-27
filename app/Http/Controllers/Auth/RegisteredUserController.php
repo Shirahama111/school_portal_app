@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()], //passwordのルールは 8文字以上、最低1文字以上の大文字と小文字、最低1文字以上の記号、最低1文字以上の数字 min(8)->mixedCase()->numbers()->symbols()
             'position_id' => ['required'],
             'classroom_id' => ['required'],
             'school_id' => ['required'],

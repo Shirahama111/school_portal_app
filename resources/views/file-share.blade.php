@@ -86,24 +86,24 @@
           </div>
           @endforeach
 
-          
-          @foreach($files as $file)
-            <div class="max-w-4xl mx-auto flex justify-center items-center my-3 text-lg">
-              <p class="flex-2">{{$file->createdUser->name}} : {{$file->created_at}}</p>
-              <a href="{{$file->url}}" class="mx-5 flex-1" target="_blank">{{$file->name}}</a>
-              <a href="{{route('file-share.download',['file_path' => encrypt($file->path) ])}}" class="mx-5 flex-1">download</a>
-              <form action="{{ route('file-share.delete') }}" method="post" class="flex-1">
-                @method('delete')
-                @csrf
-                  <input type="hidden" name="directory_path" value="{{ encrypt($current_directory)}}">
-                  <input type="hidden" name="delete_file_path" value="{{$file->path}}">
-                  <x-primary-button class="ml-3">
-                    削除
-                  </x-primary-button>
-              </form>
-            </div>
-          @endforeach
-
+          @if(!empty($files[0]))
+            @foreach($files as $file)
+              <div class="max-w-4xl mx-auto flex justify-center items-center my-3 text-lg">
+                <p class="flex-2">{{$file->createdUser->name}} : {{$file->created_at}}</p>
+                <a href="{{$file->url}}" class="mx-5 flex-1" target="_blank">{{$file->name}}</a>
+                <a href="{{route('file-share.download',['file_path' => encrypt($file->path) ])}}" class="mx-5 flex-1">download</a>
+                <form action="{{ route('file-share.delete') }}" method="post" class="flex-1">
+                  @method('delete')
+                  @csrf
+                    <input type="hidden" name="directory_path" value="{{ encrypt($current_directory)}}">
+                    <input type="hidden" name="delete_file_path" value="{{$file->path}}">
+                    <x-primary-button class="ml-3">
+                      削除
+                    </x-primary-button>
+                </form>
+              </div>
+            @endforeach
+          @endif
 
           @isset($delete_message)
               <p

@@ -19,7 +19,7 @@
 
     </head>
     <body class="font-kosugimaru antialiased">
-        <div class="min-h-screen bg-white bg-opacity-70">
+        <div class="min-h-screen bg-white bg-opacity-60">
 
             @include('layouts.navigation',['auth' => Auth::user()->position->name])
 

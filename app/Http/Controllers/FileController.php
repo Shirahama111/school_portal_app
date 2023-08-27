@@ -37,6 +37,8 @@ class FileController extends Controller
             array_push($files, $file);
         }
 
+        // dd($files[0]->isEmpty());
+
 
         //リクエストのディレクトリパス配下に存在するディレクトリを取得
         $directories_path = Storage::directories($request->directory_path);

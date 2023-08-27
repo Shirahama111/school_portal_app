@@ -8,6 +8,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\EmergencyContactController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +64,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/emergency-contact', [EmergencyContactController::class, 'index'])->name('emergency-contact.index');
     Route::post('/emergency-contact', [EmergencyContactController::class, 'store'])->name('emergency-contact.store');
     Route::delete('/emergency-contact', [EmergencyContactController::class, 'delete'])->name('emergency-contact.delete');
+
+    Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
+    Route::post('/attendance/search', [AttendanceController::class, 'search'])->name('attendance.search');
 
 
     //routeはpathを入れるとおかしくなる

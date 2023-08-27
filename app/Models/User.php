@@ -82,9 +82,15 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     
     }
+
     public function emergencyContacts()
     {
         return $this->hasMany(EmergencyContact::class);
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
     }
 
 }

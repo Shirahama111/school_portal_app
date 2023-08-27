@@ -9,9 +9,7 @@ use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    //passwordバリデーションルールを変えたのでseedも変更が必要
     public function run(): void
     {
         for ($i=1; $i <5 ; $i++) { 
