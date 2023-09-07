@@ -20,7 +20,7 @@ switch ($auth) {
 <nav x-data="{ open: false }" class="{{ $bg }} shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20">
+        <div class="flex justify-between h-[12vh]">
             <div class="flex">
                 
                 <!-- Logo -->
@@ -31,7 +31,7 @@ switch ($auth) {
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-lg">
                     <x-nav-link :href="route('main-menu')" auth="{{Auth::user()->position->name}}" :active="request()->routeIs('main-menu')">
                         メインメニュー
                     </x-nav-link>
@@ -43,8 +43,8 @@ switch ($auth) {
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" auth="{{ $auth }}" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-900 {{ $dropdown_style }} shadow-xl hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->school->name }} - {{ Auth::user()->classroom->name }} : {{ Auth::user()->name }}</div>
+                        <button class="h-[5vh] inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-900 {{ $dropdown_style }} shadow-xl hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div><i class="bi bi-person-circle"></i> {{ Auth::user()->school->name }} - {{ Auth::user()->classroom->name }} : {{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

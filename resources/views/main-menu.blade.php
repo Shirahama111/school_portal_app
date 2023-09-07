@@ -21,23 +21,23 @@
     <!-- 生徒用メニュー -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{route('file-share.index',['directory_path' => encrypt('public/'.Auth::user()->school_id.'_'.Auth::user()->classroom_id)])}}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">ファイル共有画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{route('file-share.index',['directory_path' => encrypt('public/'.Auth::user()->school_id.'_'.Auth::user()->classroom_id)])}}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">ファイル共有 <i class="bi bi-share"></i></a>
             </div>
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('consultation.index') }}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">相談フォーム 送信画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('consultation.index') }}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">相談フォーム <i class="bi bi-chat-left-text"></i></a>
             </div>
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('schedule.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">学内予定表 確認画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('schedule.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">学内予定表 <i class="bi bi-calendar3"></i></a>
             </div>
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('attendance.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">出席・体調報告 送信画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('attendance.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">出席・体調報告 <i class="bi bi-clipboard2-check"></i></a>
             </div>
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 送信画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 <i class="bi bi-signpost-2"></i></a>
             </div>
-            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 確認画面</a>
+            <div class="border border-blue-300 max-w-2xl my-8 mx-auto bg-pastelblue-900 hover:bg-pastelblue-500 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 <i class="bi bi-exclamation-square"></i></a>
             </div>
         </div>
     </div>
@@ -114,26 +114,26 @@
 
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{route('file-share.index',['directory_path' => encrypt('public/'.Auth::user()->school_id.'_'.Auth::user()->classroom_id)])}}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">ファイル共有画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{route('file-share.index',['directory_path' => encrypt('public/'.Auth::user()->school_id.'_'.Auth::user()->classroom_id)])}}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">ファイル共有 <i class="bi bi-share"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('consultation.index') }}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">相談フォーム 確認画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('consultation.index') }}" auth="{{ Auth::user()->position->name }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">相談フォーム <i class="bi bi-chat-left-text"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('schedule.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">学内予定表 編集画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('schedule.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">学内予定表 <i class="bi bi-calendar3"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('attendance.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">出席・体調報告 確認画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('attendance.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">出席・体調報告 <i class="bi bi-clipboard2-check"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 確認画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('course.index') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">進路報告 <i class="bi bi-signpost-2"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 編集画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{route('emergency-contact.index')}}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">緊急連絡 <i class="bi bi-exclamation-square"></i></a>
             </div>
-            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-105 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
-                <a href="{{ route('register') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">生徒・指導員登録画面</a>
+            <div class="border border-purple-300 max-w-2xl my-8 mx-auto bg-pastelpurple-500 hover:bg-pastelpurple-900 hover:scale-110 shadow-md hover:shadow-2xl sm:rounded-lg transition ease-out">
+                <a href="{{ route('register') }}" class="block p-6 font-bold text-center text-lg text-gray-700 transition">生徒・指導員登録 <i class="bi bi-person-plus"></i></a>
             </div>
         </div>
     @endif
