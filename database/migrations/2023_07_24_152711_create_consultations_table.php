@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->boolean('anonymity');
             $table->timestamp('date');
+            $table->integer('replay')->nullable(true);
         });
 
         // Schema::table('consultations', function (Blueprint $table) {

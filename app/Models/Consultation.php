@@ -14,6 +14,7 @@ class Consultation extends Model
         'from',
         'content',
         'anonymity',
+        'replay',
         'date',
     ];
 
@@ -30,5 +31,10 @@ class Consultation extends Model
     {
         //fromカラムとuserモデルのidが紐づく
         return $this->belongsTo(User::class, 'from')->withDefault();
+    }
+
+    public function getReplay()
+    {
+        return $this->hasOne(Consultation::class, 'id', 'replay');
     }
 }

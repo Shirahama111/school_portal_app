@@ -89,19 +89,35 @@
       </form>
     </div>
   
-    <div class="max-w-4xl mx-auto sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
-      <label class="text-gray-900 text-xl font-bold" for="anonymity">相談履歴</label>
-      @foreach($fromConsultations as $consultation)
-      <div class="max-w-3xl my-8 mx-auto bg-pastelblue-900 shadow-md sm:rounded-lg p-6">
-        <div class="text-lg mb-2">宛先 : {{ $consultation->toUser->name }}</div>  
-        <div class="text-md p-2 bg-gray-100 rounded-lg">{{ $consultation->content }}</div>
-          <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
-          @if($consultation->anonymity)
-          <div class="text-sm text-right">匿名希望</div>
-          @endif
+    @foreach($fromConsultations as $consultation)
+      <div class="max-w-4xl mx-auto mb-10 sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
+        <div class="flex justify-start">
+          <div class="w-3/5 my-8 bg-pastelblue-900 shadow-md sm:rounded-lg p-6">
+            <div class="text-lg mb-2">宛先 : {{ $consultation->toUser->name }}</div>  
+            <div class="text-md p-2 bg-gray-100 rounded-lg whitespace-pre-wrap">{{ $consultation->content }}</div>
+              <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
+              @if($consultation->anonymity)
+              <div class="text-sm text-right">匿名希望</div>
+              @endif
+          </div>
+        </div>
+        @if($consultation->replay == null)
+          <div class="flex justify-end">
+            <div class="w-3/5 my-8 bg-pastelblue-900 shadow-md sm:rounded-lg p-6">
+              <div class="text-md text-center text-red-900">返信はありません</div>  
+            </div>
+          </div>
+        @else
+        <div class="flex justify-end">
+          <div class="w-3/5 my-8 bg-pastelblue-900 shadow-md sm:rounded-lg p-6">
+            <div class="text-md mb-2">返信があります</div>  
+            <div class="text-md p-2 bg-gray-100 rounded-lg whitespace-pre-wrap">{{ $consultation->getReplay->content }}</div>
+              <div class="text-sm text-right mt-2">{{ $consultation->getReplay->date }}</div>
+          </div>
+        </div>
+        @endif
       </div>
-      @endforeach
-    </div>
+    @endforeach
   </div>
 
 @elseif($auth === '指導員')
@@ -112,20 +128,51 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-4xl mx-auto sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
-      <label class="text-gray-900 text-xl font-bold" for="anonymity">受けた相談</label>
-      @foreach($toConsultations as $consultation)
-      <div class="max-w-3xl my-8 mx-auto bg-pastelpurple-900 shadow-md sm:rounded-lg p-6">
-        @if($consultation->anonymity)
-        <div class="text-lg mb-2">差出人 : 匿名</div>  
-        @else
-        <div class="text-lg mb-2">差出人 : {{ $consultation->fromUser->name }}</div>  
-        @endif
-        <div class="text-md p-2 bg-gray-100 rounded-lg">{{ $consultation->content }}</div>
-          <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
-      </div>
-      @endforeach
+
+    <div class="max-w-4xl mx-auto mb-10 sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
+      <label class="text-gray-900 text-xl font-bold" for="anonymity">相談一覧</label>
     </div>
+
+    @foreach($toConsultations as $consultation)
+    <div class="max-w-4xl mx-auto mb-10 sm:p-6 lg:p-8 bg-gray-300 bg-opacity-70 rounded-lg shadow-2xl">
+      <div class="flex justify-start">
+        <div class="w-3/5 my-8 bg-pastelpurple-900 shadow-md sm:rounded-lg p-6">
+          @if($consultation->anonymity)
+          <div class="text-lg mb-2">差出人 : 匿名</div>  
+          @else
+          <div class="text-lg mb-2">差出人 : {{ $consultation->fromUser->name }}</div>  
+          @endif
+          <div class="text-md p-2 bg-gray-100 rounded-lg whitespace-pre-wrap">{{ $consultation->content }}</div>
+          <div class="text-sm text-right mt-2">{{ $consultation->date }}</div>
+        </div>
+      </div>
+      @if($consultation->replay == null)
+      <div class="flex justify-end">
+        <div class="w-3/5 my-8 bg-pastelpurple-900 shadow-md sm:rounded-lg p-6">
+          <label class="text-red-900 text-md" for="anonymity">この相談は未返信です</label>
+          <form action="{{ route('consultation.replay') }}" method="post">
+            @csrf
+            @method('post')
+            <input type="hidden" name="to_user_id" value="{{ $consultation->fromUser->id }}">
+            <input type="hidden" name="id" value="{{ $consultation->id }}">
+            <textarea name="content" id="content" cols="30" rows="5" class="block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg my-3 py-3 px-4 focus:outline-none focus:bg-white focus:border-gray-500" required></textarea>
+            <div class="flex justify-end">
+              <x-primary-button>返信</x-primary-button>
+            </div>
+          </form>
+        </div>
+      </div>
+      @else
+      <div class="flex justify-end">
+        <div class="w-3/5 my-8 bg-pastelpurple-900 shadow-md sm:rounded-lg p-6">
+          <div class="text-lg mb-2">返信済</div>
+          <div class="text-md p-2 bg-gray-100 rounded-lg whitespace-pre-wrap">{{ $consultation->getReplay->content }}</div>
+          <div class="text-sm text-right mt-2">{{ $consultation->getReplay->date }}</div>
+        </div>
+      </div>
+      @endif
+    </div>
+      @endforeach
   </div>
 @endif
 

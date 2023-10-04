@@ -175,9 +175,9 @@
         @foreach($attendances as $attendance)
   
           <div class="mt-3">
-            <p>{{$attendance->user->id}}</p>
-            <p>{{$attendance->user->name}}</p>
-            <p>{{$attendance->created_at}}</p>
+            <p>名前 : {{$attendance->user->name}}</p>
+            <p>体温 : {{$attendance->temperature}}</p>
+            <p>時刻 : {{$attendance->created_at}}</p>
           </div>
   
         @endforeach
@@ -192,8 +192,7 @@
         @foreach($absence_users as $absence_user)
   
           <div class="mt-3">
-            <p>{{$absence_user->id}}</p>
-            <p>{{$absence_user->name}}</p>
+            <p>名前 : {{$absence_user->name}}</p>
           </div>
   
         @endforeach

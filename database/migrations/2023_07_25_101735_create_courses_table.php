@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('address');
             $table->text('content');
-            $table->text('remarks');
+            $table->text('remarks')->nullable(true);
             $table->timestamp('date');
         });
     }

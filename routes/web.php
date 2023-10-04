@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation.index');
     Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
+    
+    Route::post('/consultation/replay', [ConsultationController::class, 'replay'])->name('consultation.replay');
 
     Route::get('/course', [CourseController::class, 'index'])->name('course.index');
     Route::post('/course', [CourseController::class, 'store'])->name('course.store');
